@@ -1,0 +1,252 @@
+﻿@model Tuple<List<ShowCourseListItemViewModel>, int>
+@using ModernLearns.Core.DTOs.Course
+@using ModernLearns.DataLayer.Entities.Course
+@{
+    ViewData["Title"] = ViewBag.groupTitle;
+}
+@section StyleLink{ 
+    <link rel="stylesheet" href="/noUiSlider/nouislider.min.css">
+}
+@section Topic_Layer{
+    <!-- BreadCrumb start -->
+    <div class="container breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb_iner">
+                        <li class="breadcrumb_iner_item"><a href="/Home">خانه</a></li> /
+                        <li class="breadcrumb_iner_item"><a href="#">@ViewData["Title"]</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- BreadCrumb End -->
+}
+<!-- Filtering & Product start -->
+<div class="container">
+    <form id="formFilter" asp-action="Index" method="get">
+        <input type="hidden" id="pageid" name="pageId" value="@ViewBag.pageId.ToString()" />
+        <section class="term-categories">
+            <div class="top-bar">
+
+                <header>
+                    <h1> دوره های <span> @ViewData["Title"] </span> </h1> <span><a class="btn_1"> @Model.Item1.Count دوره</a> </span>
+                </header>
+
+                <div class="row">
+
+                    <div class="col-md-4 col-sm-12 col-xs-12 pull-right" id="filter">
+                            <div class="input">
+                                <input type="text" name="filter" placeholder="موضوع مورد نظر ...">
+                                <button><i class="zmdi zmdi-search"></i></button>
+                            </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12 pull-right">
+                        <div class="switch-field available"  onclick="subForm()">
+                            <input id="available-filter-1" name="getType" value="all" @((ViewBag.getType=="all")?"checked" : "") type="radio">
+                            <label for="available-filter-1"> همه </label>
+                            <input id="available-filter-2" name="getType" value="buy" @((ViewBag.getType=="buy")?"checked" : "") type="radio">
+                            <label for="available-filter-2"> خریدنی </label>
+                            <input id="available-filter-3" name="getType" value="free" @((ViewBag.getType=="free")?"checked" : "") type="radio">
+                            <label for="available-filter-3"> رایگان </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12 pull-left">
+                        <div class="select-ddl">
+                            <select name="orderByType" onchange="subForm()">
+                                <option> مرتب سازی </option>
+                                <option value="updatedate"> تاریخ بروز رسانی </option>
+                                <option value="date"> تاریخ انتشار </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <aside class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+
+                    <section class="aside-section filter-by-price">
+                        <header>
+                            <h3> فیلتر بر اساس قیمت </h3>
+                        </header>
+                        <div class="price-range">
+                            <input type="hidden" value="" id="min-value" name="startPrice">
+                            <input type="hidden" value="" id="max-value" name="endPrice">
+                            <div class="price-bar">
+                                <div id="priceFilter"></div>
+                            </div>
+                            <div class="max-price">تا <span id="max-text">500000</span> تومان</div>
+                            <div class="min-price">از <span id="min-text">20000</span> تومان</div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </section>
+
+                    <section class="aside-section filter-by-category">
+                        <header>
+                            <h3> دسته بندی موضوعات </h3>
+                            <i id="dropdown-cat" class="zmdi zmdi-chevron-down"></i>
+                        </header>
+                        <div class="inner">
+                            @{
+                                List<CourseGroup> groups = ViewBag.Groups as List<CourseGroup>;
+                                List<int> selected = ViewBag.selectedGroups as List<int>;
+                            }
+                            <ul>
+                                @foreach (var group in groups.Where(g => g.ParentId == null))
+                                {
+                                    <li>
+                                        <input onchange="changeGroup()" type="checkbox" @((selected.Any(s => s == group.GroupId) ? "checked" : "")) name="selectedGroups" value="@group.GroupId" id="cat-1">
+                                        <label for="cat-1"> @group.GroupTitle </label>
+                                        @if (groups.Any(g => g.ParentId == group.GroupId))
+                                        {
+                                            <ul>
+                                                @foreach (var sub in groups.Where(g => g.ParentId == group.GroupId))
+                                                {
+                                                    <li>
+                                                        <input onchange="changeGroup()" @((selected.Any(s => s == sub.GroupId) ? "checked" : "")) type="checkbox" name="selectedGroups" value="@sub.GroupId" id="cat-1">
+                                                        <label for="cat-1"> @sub.GroupTitle </label>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        }
+
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </section>
+
+                </aside>
+
+                <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                    <section class="special_cource bottom-padding">
+                        <div class="container">
+                            <div class="row rtl-text">
+                                @foreach (var item in Model.Item1)
+                                {
+                                    <partial name="_BoxCourse" model="@item" />
+                                }
+                            </div>
+                            <div class="row align-items-center padding_top">
+                                <ul class="pagination pg-amber">
+                                    @if (Model.Item2 > 1)
+                                    {
+                                        <!--Arrow left-->
+                                        @*<li class="page-item">
+                                            <a class="page-link waves-effect" aria-label="Previous">
+                                                <span aria-hidden="true">«</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>*@
+
+                                        <!--Numbers-->
+                                        for (int i = 1; i <= (int)Model.Item2; i++)
+                                        {
+                                            <li class="@((ViewBag.PageId==i)?"page-item active":"page-item")"><a class="page-link waves-effect" onclick="changePage(@i)">@i</a></li>
+                                        }
+
+                                        <!--Arrow right-->
+                                        @*<li class="page-item">
+                                            <a class="page-link waves-effect" aria-label="Next">
+                                                <span aria-hidden="true">»</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>*@
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+
+                </div>
+            </div>
+        </section>
+    </form>
+</div>
+<!-- Filtering & Product end -->
+
+
+@section Scripts{
+    <script src="/noUiSlider/nouislider.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script type="text/javascript">
+
+        function changePage(pageid) {
+            $("#pageid").val(pageid);
+            $("#formFilter").submit();
+        }
+
+        $(function () {
+
+            var slider = document.getElementById('priceFilter');
+            noUiSlider.create(slider, {
+                start: [20000, 5000000],
+                step: 5000,
+                connect: true,
+                direction: 'rtl',
+                range: {
+                    'min': 20000,
+                    'max': 5000000
+                }
+            });
+
+            var marginMin = document.getElementById('min-text'),
+                marginMax = document.getElementById('max-text');
+
+            slider.noUiSlider.on('update', function (values, handle) {
+                var xvalue = Math.round(values[handle]);
+                if (handle) {
+                    marginMax.innerHTML = xvalue;
+                } else {
+                    marginMin.innerHTML = xvalue;
+                }
+                //console.log(values[handle]);
+            });
+
+            slider.noUiSlider.on('change', function (values, handle) {
+                var xvalue = Math.round(values[handle]);
+                if (handle) {
+                    // setGetParameter('max_price', xvalue);
+                    $('#max-value').val(xvalue);
+                } else {
+                    // setGetParameter('min_price', xvalue);
+                    $('#min-value').val(xvalue);
+                }
+            });
+
+
+            slider.noUiSlider.on('slide', function (values, handle) {
+
+                console.log(values[0]);
+                console.log(values[1]);
+
+                var xvalue = Math.round(values[handle]);
+                //updateSliderRange( Math.round(values[0]), Math.round(values[1]) );
+            });
+
+
+
+            function updateSliderRange(min, max) {
+                slider.noUiSlider.updateOptions({
+                    range: {
+                        'min': min,
+                        'max': max
+                    }
+                });
+                subForm();
+            }
+        });
+
+        function changeGroup() {
+            $("#formFilter").submit();
+        }
+        function subForm() {
+            $("#formFilter").submit();
+        }
+      
+    </script>
+}

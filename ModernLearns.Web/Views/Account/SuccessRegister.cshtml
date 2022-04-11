@@ -1,0 +1,29 @@
+﻿@model ModernLearns.DataLayer.Entities.User.User
+@{
+    ViewData["Title"] = "پایان ثبت نام";
+}
+
+@section Topic_Layer{
+    <!-- BreadCrumb start -->
+    <div class="container breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb_iner">
+                        <li class="breadcrumb_iner_item"><a href="/Home">خانه</a></li> /
+                        <li class="breadcrumb_iner_item"><a href="#">@ViewData["Title"]</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- BreadCrumb End -->
+}
+
+<div class="container single_feature_padding rtl-text">
+    <div class="alert alert-success" dir="rtl">
+        <h2>@Model.UserName عزیز !</h2>
+        <p>ثبت نام شما انجام شد ، ایمیلی حاوی لینک فعالسازی به ایمیمل "@Model.Email" ارسال شد .</p>
+        <p>جهت ادامه ثبت نام وارد ایمیل خود شوید و روی لینک کلیک کنید .</p>
+    </div>
+</div>

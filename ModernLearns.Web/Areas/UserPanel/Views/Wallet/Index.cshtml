@@ -1,0 +1,91 @@
+﻿@model ModernLearns.Core.DTOs.ChargeWalletViewModel
+@using ModernLearns.Core.Convertors
+@{
+    ViewData["Title"] = "کیف پول شما";
+}
+@section Topic_Layer{
+    <!-- BreadCrumb start -->
+    <div class="container breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb_iner">
+                        <li class="breadcrumb_iner_item"><a href="/Home">خانه</a></li> /
+                        <li class="breadcrumb_iner_item"><a href="#">@ViewData["Title"]</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- BreadCrumb End -->
+}
+
+<!-- account start -->
+<div class="container section_padding">
+    <div class="row accouont">
+        <div class="col-md-3 pull-right">
+            <partial name="_SideBar" />
+        </div>
+        <div class="col-md-9 pull-left">
+            <div class="left-side">
+                <header><h2> کیف پول شما </h2></header>
+                <div class="left-ineer">
+                    <div class="row">
+                        <form class="form-layer-style" asp-action="Index" method="post">
+                           
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <!-- input -->
+                                    <div class="input-layer">
+                                        <label><i class="zmdi zmdi-balance-wallet"></i>مبلغ به تومان</label>
+                                        <input type="number" asp-for="Amount" aria-describedby="amount">
+                                        <span asp-validation-for="Amount" class="text-danger"></span>
+                                    </div>
+                                    <!--/ input -->
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12 pull-left">
+                                    <button class="submit-button btn_4 margin-top"> <span> شارژ کیف پول </span> </button>
+                                </div>
+                            
+                        </form>
+                        <hr />
+                        @{
+                            List<ModernLearns.Core.DTOs.WalletViewModel> list = ViewBag.ListWallet as
+                                List<ModernLearns.Core.DTOs.WalletViewModel>;
+
+                        }
+                        <div class="col-md-12 margin-top">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>مبلغ</th>
+                                    <th>تاریخ</th>
+                                    <th>نوع تراکنش</th>
+                                    <th>شرح</th>
+                                </tr>
+                                @foreach (var item in list)
+                                {
+                                    <tr>
+                                        <td>@item.Amount.ToString("#,0 تومان")</td>
+                                        <td>@item.DateTime.ToShamsi()</td>
+                                        <td>
+                                            @if (item.Type == 1)
+                                            {
+                                                <p class="text-success">واریز به حساب</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="text-danger">برداشت از حساب</p>
+                                            }
+                                        </td>
+                                        <td>@item.Description</td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- account end -->

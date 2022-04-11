@@ -1,0 +1,89 @@
+﻿@model ModernLearns.Core.DTOs.EditProfileViewModel
+@{
+    ViewData["Title"] = "ویرایش پروفایل";
+}
+
+@section Topic_Layer{
+    <!-- BreadCrumb start -->
+    <div class="container breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb_iner">
+                        <li class="breadcrumb_iner_item"><a href="/Home">خانه</a></li> /
+                        <li class="breadcrumb_iner_item"><a href="#">@ViewData["Title"]</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- BreadCrumb End -->
+}
+<!-- account start -->
+<div class="container section_padding">
+    <div class="row accouont">
+        <div class="col-md-3 pull-right">
+            <partial name="_SideBar" />
+        </div>
+        <div class="col-md-9 pull-left">
+            <div class="left-side">
+                <header><h2> ویرایش پروفایل </h2></header>
+                <div class="left-ineer">
+                    <form class="form-layer-style" asp-action="EditProfile" method="post" enctype="multipart/form-data">
+                        @if (ViewBag.IsSuccess != null)
+                        {
+                            <div class="alert alert-success">
+                                اطلاعات کاربری شما با موفقیت ویرایش شد
+                            </div>
+                        }
+
+                        <input type="hidden" asp-for="AvatarName" />
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <!-- input -->
+                                <div class="input-layer">
+                                    <label><i class="zmdi zmdi-account"></i>  نام کاربری </label>
+                                    <input type="text" asp-for="UserName" aria-describedby="username">
+                                </div>
+                                <!--/ input -->
+                            </div>
+
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <!-- input -->
+                                <div class="input-layer">
+                                    <label><i class="zmdi zmdi-email"></i>  ایمیل </label>
+                                    <input type="text" asp-for="Email" placeholder="ایمیل" aria-describedby="email-address">
+                                </div>
+                                <!--/ input -->
+                            </div>
+                            <div class="col-md-12 col-xs-12">
+                                <!-- textarea -->
+                                <div class="textarea-layer">
+                                    <label><i class="zmdi zmdi-assignment"></i>  شرح حال </label>
+                                    <textarea asp-for="Bio"> </textarea>
+                                </div>
+                                <!-- /textarea -->
+                            </div>
+
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <p class="help-block">
+                                    آواتار
+                                </p>
+                                <input type="file" asp-for="UserAvatar" />
+                                <p>لطفا فقط تصویر انتخاب کنید</p>
+                                <img class="thumbnail" src="/img/userAvatar/@Model.AvatarName" style="max-width: 150px" />
+                            </div>
+
+                            <div class="col-md-12 col-sm-12 col-xs-12 pull-left">
+                                <button class="submit-button btn_4 margin-top"> <span> ثبت نهایی </span> </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- account end -->

@@ -1,0 +1,65 @@
+﻿@model List<ModernLearns.Core.DTOs.Course.ShowUserCourse>
+@{
+    ViewData["Title"] = "دوره های من";
+}
+
+
+@section Topic_Layer{
+    <!-- BreadCrumb start -->
+    <div class="container breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb_iner">
+                        <li class="breadcrumb_iner_item"><a href="/Home">خانه</a></li> /
+                        <li class="breadcrumb_iner_item"><a href="#">@ViewData["Title"]</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- BreadCrumb End -->
+}
+
+<!-- account start -->
+<div class="container section_padding">
+    <div class="row accouont">
+        <div class="col-md-3 pull-right">
+            <partial name="_SideBar" />
+        </div>
+        <div class="col-md-9 pull-left">
+            <div class="left-side">
+                <header><h2> @ViewData["Title"] </h2></header>
+                <div class="left-ineer">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>تصویر</th>
+                                <th>عنوان</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.CourseId
+                                    </td>
+                                    <td><img class="thumbnail" width="150" src="/course/thumb/@item.ImageName"/></td>
+                                    <td>@item.Title </td>
+                                    <td>
+                                        <a class="btn btn-info" href="/ShowCourse/@item.CourseId">نمایش</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- account end -->

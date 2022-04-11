@@ -1,0 +1,7 @@
+﻿@model Tuple<int, int>
+
+@if (User.Identity.IsAuthenticated && ViewBag.NotAccess == null)
+{
+<a onclick="vote(true)"><i id="like" class="zmdi zmdi-favorite"></i>@Model.Item1</a>
+    <a onclick="vote(false)"><i id="desLike" class="zmdi zmdi-favorite-outline">@Model.Item2</i></a>
+}

@@ -1,0 +1,47 @@
+﻿@page
+@model ModernLearns.Web.Pages.Admin.ContactUs.IndexModel
+@{
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">تماس باما</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                تماس باما
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                        <div class="col-md-12" style="margin: 10px 0;">
+                            @if (Model.ContactUs != null)
+                            {
+                                <a class="btn btn-info btn-flat" href="/Admin/ContactUs/Edit">ویرایش</a>
+                                <hr />
+                                @Html.Raw(Model.ContactUs.Title)
+                            }
+                            else
+                            {
+                                <a class="btn btn-flat btn-success" href="/Admin/ContactUs/Add">افزودن</a>
+                                <hr />
+                                <div class="alert alert-warning">
+                                    هیچ متنی برای این بخش در نظر گرفته نشده از طریق لینک بالا اقدام به ثبت کنید
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>

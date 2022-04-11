@@ -1,0 +1,199 @@
+﻿@model ModernLearns.DataLayer.Entities.Course.Course
+@using ModernLearns.Core.Convertors
+@using ModernLearns.Core.Services.Interfaces;
+@using ModernLearns.DataLayer.Entities.Course
+@using ModernLearns.Core.DTOs.Course
+@inject IOrderService _orderService;
+@{
+    ViewData["Title"] = Model.CourseTitle;
+    bool IsUserInCourse = false;
+    if (User.Identity.IsAuthenticated)
+    {
+        IsUserInCourse = _orderService.IsUserInCourse(User.Identity.Name, Model.CourseId);
+    }
+
+    var comments = ViewData["Comments"] as CourseCommentViewModel;
+    int numEpisode = 1;
+}
+@section MetaTag
+    {
+    <meta name=googlebot content=index,follow>
+    <meta name=robots content=noodp,noydir>
+    <meta name=description content="شرح صفحه">
+
+    <meta property=og:site_name value="خودآموزش مدرن لرن">
+    <meta property=og:title content="@Model.CourseTitle">
+    <meta property=og:url content="https://Modernlearns.ir/ShowCourse/@Model.CourseTitle" />
+    <meta property=og:image content="/course/image/@Model.CourseImageName">
+    <meta property=og:image:url content="/course/image/@Model.CourseImageName" />
+    <meta property=og:image:width content="700">
+
+    <meta property=og:image:type content="image/jpg">
+    <meta property=og:description content="">
+    <meta property=og:price:currency content="IRR">
+    <meta property=og:locale content="ir_FA">
+}
+
+@section Topic_Layer{
+    <!-- BreadCrumb start -->
+    <div class="container breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb_iner">
+                        <li class="breadcrumb_iner_item"><a href="/Home">خانه</a></li> /
+                        <li class="breadcrumb_iner_item"><a href="#">@ViewData["Title"]</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- BreadCrumb End -->
+}
+<!-- single start -->
+<div class="container padding_top">
+    <section class="term-content section_padding">
+        <header>
+            <h1>@Model.CourseTitle</h1>
+        </header>
+    </section>
+    <div class="row">
+        <div class="col-md-8 col-sm-12 col-xs-12 pull-left">
+            <section class="term-description">
+                <img src="/course/image/@Model.CourseImageName" alt="CorseImage">
+                <h2>معرفی دوره @Model.CourseTitle</h2>
+
+                @Html.Raw(Model.CourseDescription)
+                <div class="like" id="vot">
+
+                </div>
+            </section>
+            <section class="term-episode">
+
+                @if (ViewBag.Episode != null)
+                {
+                    CourseEpisode episode = ViewBag.Episode as CourseEpisode;
+
+                    <h3>@episode.EpisodeTitle</h3>
+                    <video controls>
+                        <source src="@ViewBag.FilePath" />
+                    </video>
+                }
+                else if (!string.IsNullOrEmpty(Model.DemoFileName))
+                {
+                    <video controls poster="/course/image/@Model.CourseImageName">
+                        <source src="/course/demoes/@Model.DemoFileName" />
+                    </video>
+                }
+
+                @if (!IsUserInCourse && Model.CoursePrice != 0)
+                {
+                    <div class="alert alert-info">
+                        <p>بعد از ثبت نام در این دوره و تایید فاکتور لینک های دانلود برای شما فعال خواهد شد</p>
+                    </div>
+                }
+                <h2>سرفصل های این دوره</h2>
+
+                <ul>
+                    @foreach (var item in Model.CourseEpisodes)
+                    {
+                        <li>
+                            <p id="num-ep"><i class="zmdi zmdi-circle-o"></i>@numEpisode</p>
+                            <h3>@item.EpisodeTitle</h3>
+                            @if (item.IsFree)
+                            {
+                                <i id="type_ep">رایگان</i>
+                            }
+                            else
+                            {
+                                <i id="type_ep">نقدی</i>
+                            }
+                            <span>@item.EpisodeTime</span>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                if (item.IsFree || IsUserInCourse)
+                                {
+                                    <a href="/DownloadFile/@item.EpisodeId" id="down" class="zmdi zmdi-download btn_4 btn-light"></a>
+                                    <a href="/ShowCourse/@Model.CourseId?episode=@item.EpisodeId" id="play" class="zmdi zmdi-play btn_4 btn-light"></a>
+                                }
+                                else
+                                {
+                                    <a id="down" class="zmdi zmdi-download btn btn-light"></a>
+                                    <a id="play" class="zmdi zmdi-play btn btn-light"></a>
+                                }
+                            }
+                        </li>
+                        numEpisode += 1;
+                    }
+                </ul>
+            </section>
+            <section class="term-comment" id="comments">
+                <partial name="Course/_CourseComments" model="comments" />
+            </section>
+        </div>
+        <div class="col-md-4 col-md-4 col-sm-12 col-xs-12 pull-right">
+            <article class="info-course">
+                <div class="teacher-info">
+                    <img src="/img/userAvatar/@Model.User.UserAvatar" alt="teacher">
+                    <h2>مدرس:@Model.User.UserName</h2>
+                    <p>
+                        @Model.User.Bio
+                    </p>
+                </div>
+                <div class="term-info">
+                    <h2>اطلاعات دوره</h2>
+                    <ul>
+                        <li class="btn_2"><span>سطح دوره:</span>@Model.CourseLevel.LevelTitle</li>
+                        <li class="btn_2"><span>وضعیت دوره:</span>@Model.CourseStatus.StatusTitle</li>
+                        @if (Model.CoursePrice != 0)
+                        {
+                            <li class="btn_2"><span>قیمت:</span>@Model.CoursePrice.ToString("#,0") تومان</li>
+                        }
+                        else
+                        {
+                            <li class="btn_2"><span>قیمت:</span>رایگان</li>
+                        }
+                        @{
+                            TimeSpan time = new TimeSpan(Model.CourseEpisodes.Sum(e => e.EpisodeTime.Ticks));
+                        }
+                        <li class="btn_2"><span>مدت دوره:</span>@time</li>
+                        <li class="btn_2"><span>تعداد ویدیو ها:</span>@Model.CourseEpisodes.Count</li>
+                        <li class="btn_2"><span>تعداد دانشجو ها:</span>0 نفر </li>
+                        <li class="btn_2"><span>تاریخ ثبت این دوره:</span>@Model.CreateDate.ToShamsi()</li>
+                        <li class="btn_2"><span>اخرین بروزرسانی دوره:</span>@Model.UpdateDate?.ToShamsi()</li>
+                    </ul>
+                </div>
+                @if (Model.CoursePrice != 0 && !IsUserInCourse)
+                {
+                    <a class="btn_1 btn-buy" href="/Course/BuyCourse/@Model.CourseId">شرکت در این دوره @Model.CoursePrice تومان</a>
+                }
+                @if (Model.Tags != null)
+                {
+                    <div class="tags">
+                        <ul>
+                            @foreach (var tag in Model.Tags.Split('-', StringSplitOptions.RemoveEmptyEntries))
+                            {
+                                <li><a href="/Course?filter=@tag">#@tag</a></li>
+                            }
+                        </ul>
+                    </div>
+                }
+                <div class="social_icon">
+                    <h3>اشتراک گذاری</h3>
+                    <a href="#"> <i class="ti-facebook"></i> </a>
+                    <a href="#"> <i class="ti-twitter-alt"></i> </a>
+                    <a href="#"> <i class="ti-instagram"></i> </a>
+                    <a href="#"> <i class="ti-skype"></i> </a>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+<!-- single end -->
+
+
+
+@section Scripts{
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="/js/course-scripts.js"></script>
+}

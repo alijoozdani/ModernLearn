@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "نتیجه پرداخت";
+}
+@section Topic_Layer{
+    <!-- BreadCrumb start -->
+    <div class="container breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb_iner">
+                        <li class="breadcrumb_iner_item"><a href="/Home">خانه</a></li> /
+                        <li class="breadcrumb_iner_item"><a href="#">@ViewData["Title"]</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- BreadCrumb End -->
+}
+
+<div class="container rtl-text section_padding">
+    @if (ViewBag.IsSuccess == true)
+    {
+        <div class="alert alert-success">
+            <h2>پرداخت با موفقیت انجام شد</h2>
+            <p> کد پیگیری : @ViewBag.Code</p>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger">
+            <h2>پرداخت با شکست مواجه شد</h2>
+        </div>
+    }
+</div>

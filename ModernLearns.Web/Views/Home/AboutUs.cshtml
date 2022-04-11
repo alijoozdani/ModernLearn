@@ -1,0 +1,30 @@
+﻿@model ModernLearns.DataLayer.Entities.AboutUs.AboutUs
+@{
+    ViewData["Title"] = "درباره ما";
+}
+@section Topic_Layer{
+    <!-- BreadCrumb start -->
+    <div class="container breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb_iner">
+                        <li class="breadcrumb_iner_item"><a href="/Home">خانه</a></li> /
+                        <li class="breadcrumb_iner_item"><a href="#">@ViewData["Title"]</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- BreadCrumb End -->
+}
+<!-- aboutUs start -->
+<div class="container section_padding">
+    <section class="about_part">
+        <header><span class="logo"><img src="/img/logo.png"></span><h2> درباره مدرن لرن </h2></header>
+        <article class="about_text">
+            @Html.Raw(Model.Text)
+        </article>
+    </section>
+</div>
+<!-- aboutUs end -->

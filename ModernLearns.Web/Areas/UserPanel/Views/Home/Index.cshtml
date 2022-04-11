@@ -1,0 +1,47 @@
+﻿@using ModernLearns.Core.Convertors
+@model ModernLearns.Core.DTOs.InformationUserViewModel
+@{
+    ViewData["Title"] = "پنل کاربری " + User.Identity.Name;
+}
+@section Topic_Layer{
+    <!-- BreadCrumb start -->
+    <div class="container breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb_iner">
+                        <li class="breadcrumb_iner_item"><a href="/Home">خانه</a></li> /
+                        <li class="breadcrumb_iner_item"><a href="#">@ViewData["Title"]</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- BreadCrumb End -->
+}
+<!-- account start -->
+<div class="container section_padding">
+    <div class="row accouont">
+        <div class="col-md-3 pull-right">
+            <partial name="_SideBar" />
+        </div>
+        <div class="col-md-9 pull-left">
+            <div class="left-side">
+                <header><h2> داشبورد </h2></header>
+                <div class="left-ineer">
+                        <div class="account-information">
+                            <h3> اطلاعات کاربری </h3>
+                            <ul>
+                                <li> <i class="zmdi zmdi-assignment-account"></i> نام کاربری :  @Model.UserName </li>
+                                <li> <i class="zmdi zmdi-email"></i> ایمیل : @Model.Email </li>
+                                <li> <i class="zmdi zmdi-calendar-check"></i> تاریخ عضویت : @Model.RegisterDate.ToShamsi() </li>
+                                <li> <i class="zmdi zmdi-account"></i> موجودی حساب : @Model.Wallet تومان </li>
+                            </ul>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- account end -->

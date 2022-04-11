@@ -1,0 +1,91 @@
+﻿@model ModernLearns.DataLayer.Entities.ContactUs.ContactUs
+@{
+    ViewData["Title"] = "تماس باما";
+    var isSuccess = TempData["Success"] != null;
+}
+@section Topic_Layer{
+    <!-- BreadCrumb start -->
+    <div class="container breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb_iner">
+                        <li class="breadcrumb_iner_item"><a href="/Home">خانه</a></li> /
+                        <li class="breadcrumb_iner_item"><a href="#">@ViewData["Title"]</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- BreadCrumb End -->
+}
+<!-- ContactUs Start -->
+<div class="container section_padding">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="contact-info">
+                <div class="media-body">
+                    <h3>تماس باما</h3>
+                    <p>
+                        @Model.Title
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 col-xs-12 contact-info-col">
+                        <section class="shadow-style">
+                            <h2><i class="zmdi zmdi-pin"></i> نشانی ما </h2>
+                            <p> @Model.Address</p>
+                        </section>
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-xs-12 contact-info-col">
+                        <section class="shadow-style">
+                            <h2><i class="zmdi zmdi-phone-in-talk"></i> شماره تماس و ایمیل </h2>
+                            <ul>
+                                <li>
+                                    <a href="tel:@Model.PhoneNumber"> @Model.PhoneNumber</a> -
+                                </li>
+                                <li> @Model.Email </li>
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-xs-12 contact-info-col">
+                        <section class="shadow-style">
+                            <h2><i class="zmdi zmdi-time"></i> ساعات پاسخگویی </h2>
+                            <ul>
+                                @foreach (var item in Model.ResponseTime.Split('-'))
+                                {
+                                    <li>@item</li>
+                                }
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            <partial name="_ContactUsForm" model="null" />
+        </div>
+    </div>
+</div>
+<!-- ContactUs End -->
+
+@section Scripts
+{
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+
+    @if (isSuccess)
+    {
+        <script>
+            swal({
+                title: "پیام شما با موفقیت ارسال شد",
+                text: "پاسخ از طریق ایمیل برای شما ارسال خواهد شد",
+                icon: "success",
+                button: "باشه"
+            });
+        </script>
+
+    }
+
+}

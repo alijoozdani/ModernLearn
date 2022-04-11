@@ -1,0 +1,119 @@
+﻿@page
+@model ModernLearns.Web.Pages.Admin.ContactUs.HelpForm.IndexModel
+@using ModernLearns.Core.Convertors
+@{
+}
+
+
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row">
+            <section class="col-lg-12 col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3>پیام های پشتیبانی</h3>
+                        <hr />
+                        <form method="get" class="row">
+                            <input type="hidden" name="pageId" asp-for="ContactUsModel.CurrentPage" />
+                            <div class="col-md-6">
+                                <select onchange="submitForm()" class="form-control" name="isPosted" asp-for="ContactUsModel.IsPosted">
+                                    <option value="true">پاسخ داده شده</option>
+                                    <option value="false">درحال برسی</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>نام و نام خانوادگی</th>
+                                        <th>وضعیت</th>
+                                        <th>تاریخ ثبت </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var item in Model.ContactUsModel.ContactUses)
+                                    {
+                                        <tr>
+                                            <td>@item.ContactId</td>
+                                            <td>@item.FullName</td>
+                                            <td>
+                                                @if (item.IsPosted)
+                                                {
+                                                    <i class="fa fa-check text-success"></i>
+                                                }
+                                                else
+                                                {
+                                                    <i class="fa fa-close text-danger"></i>
+
+                                                }
+                                            </td>
+                                            <td>@item.CreateDate.ToShamsi()</td>
+                                            <td>
+                                                <a class="btn btn-primary btn-sm" href="/Admin/ContactUs/HelpForm/Show/@item.ContactId">مشاهده</a>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="dataTables_paginate paging_simple_numbers text-center" id="example2_paginate">
+
+                            @if (Model.ContactUsModel.PageCount > 1)
+                            {
+                                <hr class="mt-0">
+
+                                <ul class="pagination">
+                                    @if (Model.ContactUsModel.CurrentPage > 1 && Model.ContactUsModel.StartPage > 1)
+                                    {
+                                        <li class="paginate_button previous disabled" id="example2_previous">
+                                            <a onclick="ChangePage(1)">1</a>
+                                        </li>
+
+                                    }
+
+                                    @for (var i = Model.ContactUsModel.StartPage; i <= Model.ContactUsModel.EndPage; i++)
+                                    {
+
+                                        <li class="@((i == Model.ContactUsModel.CurrentPage ? "paginate_button active" : "paginate_button"))">
+                                            <a onclick="ChangePage(@i)" href="javascript:void(0)">@i</a>
+                                        </li>
+                                    }
+                                    @if (Model.ContactUsModel.CurrentPage < Model.ContactUsModel.PageCount && Model.ContactUsModel.EndPage < Model.ContactUsModel.PageCount)
+                                    {
+                                        <li class="paginate_button next" id="example2_next">
+                                            <a onclick="ChangePage(@Model.ContactUsModel.PageCount)">@Model.ContactUsModel.PageCount</a>
+                                        </li>
+
+                                    }
+                                </ul>
+                            }
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+</div>
+
+@section Scripts
+{
+    <script>
+        function submitForm() {
+            $("form").submit();
+        }
+
+        function ChangePage(pageId) {
+            $("#ContactUsModel_CurrentPage").val(pageId);
+            $("form").submit();
+        }
+    </script>
+}

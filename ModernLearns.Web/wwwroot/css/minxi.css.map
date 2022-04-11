@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../sass/common/minxi.scss"
+    ],
+    "names": [],
+    "file": "minxi.css"
+}

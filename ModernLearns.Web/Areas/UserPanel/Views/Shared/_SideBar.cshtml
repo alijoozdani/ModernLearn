@@ -1,0 +1,58 @@
+﻿@using ModernLearns.Core.Convertors
+@using ModernLearns.Core.DTOs
+@using ModernLearns.Core.Services.Interfaces
+@inject IUserService _UserService
+
+@{
+    SideBarUserPanelViewModel user = _UserService.GetSideBarUserPanelData(User.Identity.Name);
+}
+<div class="right-side pull-right">
+    <div class="quick-access">
+        <div class="img-layer">
+            <a href="javascript:void(0)" class="change-image"><i class="zmdi zmdi-edit"></i></a>
+            <img src="/img/userAvatar/@user.ImageName" alt="userAvatar">
+        </div>
+        <div class="detail">
+            <h3> @user.UserName</h3>
+            <span> عضویت : @user.RegisterDate.ToShamsi() </span>
+        </div>
+        <ul>
+            <li>
+                <a href="/UserPanel" data-toggle="tooltip" data-placement="top" title=""
+                   data-original-title=" داشبورد "><i class="zmdi zmdi-settings"></i></a>
+            </li>
+            <li>
+                <a href="/UserPanel/EditProfile" data-toggle="tooltip" data-placement="top" title=""
+                   data-original-title=" ویرایش اطلاعات "><i class="zmdi zmdi-account-o"></i></a>
+            </li>
+            <li>
+                <a href="/UserPanel/ChangePassword" data-toggle="tooltip" data-placement="top" title=""
+                   data-original-title=" تغییر رمز عبور "><i class="zmdi zmdi-lock-outline"></i></a>
+            </li>
+            <li>
+                <a href="/Logout" data-toggle="tooltip" data-placement="top" title=""
+                   data-original-title=" خروج از حساب "><i class="zmdi zmdi-power"></i></a>
+            </li>
+        </ul>
+    </div>
+    <section class="sidebar">
+        <header><h3> منوی دسترسی </h3><i id="dropdown" class="zmdi zmdi-chevron-down"></i></header>
+        <div class="ineer">
+            <ul>
+                <li>
+                    <span><a href="/UserPanel">داشبورد </a></span>
+                    <ul>
+                        <li><a href="/UserPanel/EditProfile"> ویرایش حساب کاربری  </a></li>
+                        <li><a href="/UserPanel/ChangePassword"> تغییر رمز عبور  </a></li>
+                        <li><a href="/UserPanel/Wallet"> کیف پول  </a></li>
+                        <li><a href="/UserPanel/MyOrders"> فاکتور ها  </a></li>
+                        <li><a href="#"> دوره های من  </a></li>
+                    </ul>
+                </li>
+                <li><a href="#"> اطلاعیه های سیستم </a> <i>2</i></li>
+                <li><a href="#"> تیکت و پشتیبانی </a></li>
+                <li><a href="/Logout"> خروج از سیستم </a></li>
+            </ul>
+        </div>
+    </section>
+</div>

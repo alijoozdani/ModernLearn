@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ModernLearns.DataLayer.Entities.Course.CourseGroup>
+
+<a class="nav-link dropdown-toggle classes" href="" id="menuDropdown"
+   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    آموزش ها
+</a>
+<div class=" rtl-text" aria-labelledby="navbarDropdown" id="toggle-navbar">
+    @foreach (var group in Model.Where(g => g.ParentId == null))
+    {
+        <ul id="subNavbar">
+            <li>
+                <a href="/Course?selectedGroups=@group.GroupId">
+                    @group.GroupTitle <i class="dropdown-toggle"></i>
+                </a>
+                @if (Model.Any(g => g.ParentId == group.GroupId))
+                {
+                    <ul>
+                        @foreach (var sub in Model.Where(g => g.ParentId == group.GroupId))
+                        {
+                            <li>
+                                <a href="/Course?selectedGroups=@sub.GroupId">@sub.GroupTitle</a>
+                            </li>
+                        }
+                    </ul>
+                }
+            </li>
+        </ul>
+    }
+</div>

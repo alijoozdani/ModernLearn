@@ -1,0 +1,74 @@
+﻿@model ModernLearns.Core.DTOs.LoginViewModel
+@{
+    ViewData["Title"] = "ورود به حساب کاربری";
+}
+@section Topic_Layer{
+    <!-- BreadCrumb start -->
+    <div class="container breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb_iner">
+                        <li class="breadcrumb_iner_item"><a href="/Home">خانه</a></li> /
+                        <li class="breadcrumb_iner_item"><a href="#">@ViewData["Title"]</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- BreadCrumb End -->
+}
+<!-- Singup start -->
+<section class="signup padding_top">
+    <div class="container register">
+        <div class="signup-content">
+            <div class="signup-form">
+                <h2 class="form-title">ورود</h2>
+                @if (ViewBag.IsSuccess != null)
+                {
+                    <div class="alert alert-success rtl-text">
+                        <p class="help-block">ورود با موفقیت انجام شد</p>
+                    </div>
+
+                    <script>
+                // Your delay in milliseconds
+                var delay = 3000;
+                        setTimeout(function () { window.location = "https://localhost:44391/UserPanel"; }, delay);
+                    </script>
+                }
+
+                @if (ViewBag.EditProfile == true)
+                {
+                    <div class="alert alert-warning">
+                        بدلیل ویرایش پروفایل و بارگزاری مجدد اطلاعات لطفا مجدد لاگین کنید
+                    </div>
+                }
+            <form method="POST" asp-action="Login" class="register-form">
+                <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+                <div class="form-group">
+                    <label for="email"><i class="ti-email"></i></label>
+                    <input asp-for="Email" type="email" placeholder="ایمیل شما">
+                </div>
+                <div class="form-group">
+                    <label for="pass"><i class="ti-lock"></i></label>
+                    <input asp-for="Password" type="password" placeholder="رمزعبور">
+                </div>
+                <div class="form-group">
+                    <input asp-for="RememberMe" type="checkbox" id="remember-me" class="agree-term">
+                    <label for="remember-me" class="label-agree-term"><span><span></span></span>مرا به خاطر بسپار</label>
+                </div>
+                <div class="form-group form-button">
+                    <input type="submit" name="signup" id="signup" class="form-submit" value="ورود">
+                </div>
+                <div asp-validation-summary="All" class="text-danger"></div>
+            </form>
+            </div>
+            <div class="signup-image">
+                <figure><img src="/img/signIn-image.jpg" alt="sing up image"></figure>
+                <a href="/Register" class="signup-image-link">ساخت حساب جدید</a>
+                <a href="/ForgotPassword" class="signup-image-link">رمز عبور خود را فراموش کرده ام!</a>
+            </div>
+        </div>
+    </div>
+</section>
+
