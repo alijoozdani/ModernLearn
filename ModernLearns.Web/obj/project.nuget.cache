@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tikJEbJ4ENz4SvyFIrCdlk0zbCGluaf9I00gS2XM4i7kuAgnQ1nKTiesMdKE5Z2kElfXfOHNDbCE5OkhOACLJw==",
+  "dgSpecHash": "d7s2P2FlNj96yN0bEd0wnaGorYixlweKVDwWpneOxOfw5WZFaoJvGUDzPLiNjdJOrpsR3E6jJXO+zonoixA13w==",
   "success": true,
-  "projectFilePath": "D:\\Workspace\\C#\\Asp.NetCore\\ModernLearn\\ModernLearns\\ModernLearns.Web\\ModernLearns.Web.csproj",
+  "projectFilePath": "D:\\Workspace\\Project\\ModearnLearn\\ModearnLearn.Backend\\ModernLearns\\ModernLearns.Web\\ModernLearns.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ali\\.nuget\\packages\\corecompat.system.drawing.v2\\5.2.0-preview1-r131\\corecompat.system.drawing.v2.5.2.0-preview1-r131.nupkg.sha512",
     "C:\\Users\\Ali\\.nuget\\packages\\libuv\\1.9.1\\libuv.1.9.1.nupkg.sha512",

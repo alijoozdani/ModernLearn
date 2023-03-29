@@ -9,7 +9,7 @@ using ModernLearns.Core.Services.Interfaces;
 
 namespace ModernLearns.Web.Pages.Admin.ContactUs
 {
-    [PermissionChecker(21)]
+    [PermissionChecker(22)]
     public class IndexModel : PageModel
     {
         private IContactUsService _contactUs;

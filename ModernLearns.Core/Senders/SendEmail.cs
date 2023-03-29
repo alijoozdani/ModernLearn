@@ -11,8 +11,8 @@ namespace ModernLearns.Core.Senders
         public static void Send(string to,string subject,string body)
         {
             MailMessage mail = new MailMessage();
-            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-            mail.From = new MailAddress("mr.xxx0020@gmail.com", "مدرن لرن");
+            SmtpClient SmtpServer = new SmtpClient("mail.modernlearns.ir");
+            mail.From = new MailAddress("support@modernlearns.ir", "پشتیبانی مدرن لرن");
             mail.To.Add(to);
             mail.Subject = subject;
             mail.Body = body;
@@ -23,7 +23,7 @@ namespace ModernLearns.Core.Senders
             // mail.Attachments.Add(attachment);
 
             SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("mr.xxx0020@gmail.com", "123!456a789");
+            SmtpServer.Credentials = new System.Net.NetworkCredential("support@modernlearns.ir", "6n5n8T1n&");
             SmtpServer.EnableSsl = true;
 
             SmtpServer.Send(mail);

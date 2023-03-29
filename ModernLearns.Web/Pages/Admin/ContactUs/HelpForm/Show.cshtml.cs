@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ModernLearns.Core.Security;
 using ModernLearns.Core.Services.Interfaces;
 using ModernLearns.DataLayer.Entities.ContactUs;
 
 namespace ModernLearns.Web.Pages.Admin.ContactUs.HelpForm
 {
+    [PermissionChecker(22)]
     public class ShowModel : PageModel
     {
         private IContactUsService _service;

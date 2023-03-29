@@ -170,7 +170,6 @@ namespace ModernLearns.Web.Controllers
 
         #endregion
 
-
         #region Forgot Password
         [Route("ForgotPassword")]
         public ActionResult ForgotPassword()

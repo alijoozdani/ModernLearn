@@ -1,23 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Workspace\\C#\\Asp.NetCore\\ModernLearn\\ModernLearns\\ModernLearns.Core\\ModernLearns.Core.csproj": {}
+    "D:\\Workspace\\Project\\ModearnLearn\\ModearnLearn.Backend\\ModernLearns\\ModernLearns.Core\\ModernLearns.Core.csproj": {}
   },
   "projects": {
-    "D:\\Workspace\\C#\\Asp.NetCore\\ModernLearn\\ModernLearns\\ModernLearns.Core\\ModernLearns.Core.csproj": {
+    "D:\\Workspace\\Project\\ModearnLearn\\ModearnLearn.Backend\\ModernLearns\\ModernLearns.Core\\ModernLearns.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Workspace\\C#\\Asp.NetCore\\ModernLearn\\ModernLearns\\ModernLearns.Core\\ModernLearns.Core.csproj",
+        "projectUniqueName": "D:\\Workspace\\Project\\ModearnLearn\\ModearnLearn.Backend\\ModernLearns\\ModernLearns.Core\\ModernLearns.Core.csproj",
         "projectName": "ModernLearns.Core",
-        "projectPath": "D:\\Workspace\\C#\\Asp.NetCore\\ModernLearn\\ModernLearns\\ModernLearns.Core\\ModernLearns.Core.csproj",
+        "projectPath": "D:\\Workspace\\Project\\ModearnLearn\\ModearnLearn.Backend\\ModernLearns\\ModernLearns.Core\\ModernLearns.Core.csproj",
         "packagesPath": "C:\\Users\\Ali\\.nuget\\packages\\",
-        "outputPath": "D:\\Workspace\\C#\\Asp.NetCore\\ModernLearn\\ModernLearns\\ModernLearns.Core\\obj\\",
+        "outputPath": "D:\\Workspace\\Project\\ModearnLearn\\ModearnLearn.Backend\\ModernLearns\\ModernLearns.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\Ali\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -31,8 +33,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\Workspace\\C#\\Asp.NetCore\\ModernLearn\\ModernLearns\\ModernLearns.DataLayer\\ModernLearns.DataLayer.csproj": {
-                "projectPath": "D:\\Workspace\\C#\\Asp.NetCore\\ModernLearn\\ModernLearns\\ModernLearns.DataLayer\\ModernLearns.DataLayer.csproj"
+              "D:\\Workspace\\Project\\ModearnLearn\\ModearnLearn.Backend\\ModernLearns\\ModernLearns.DataLayer\\ModernLearns.DataLayer.csproj": {
+                "projectPath": "D:\\Workspace\\Project\\ModearnLearn\\ModearnLearn.Backend\\ModernLearns\\ModernLearns.DataLayer\\ModernLearns.DataLayer.csproj"
               }
             }
           }
@@ -80,7 +82,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -89,24 +92,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Workspace\\C#\\Asp.NetCore\\ModernLearn\\ModernLearns\\ModernLearns.DataLayer\\ModernLearns.DataLayer.csproj": {
+    "D:\\Workspace\\Project\\ModearnLearn\\ModearnLearn.Backend\\ModernLearns\\ModernLearns.DataLayer\\ModernLearns.DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Workspace\\C#\\Asp.NetCore\\ModernLearn\\ModernLearns\\ModernLearns.DataLayer\\ModernLearns.DataLayer.csproj",
+        "projectUniqueName": "D:\\Workspace\\Project\\ModearnLearn\\ModearnLearn.Backend\\ModernLearns\\ModernLearns.DataLayer\\ModernLearns.DataLayer.csproj",
         "projectName": "ModernLearns.DataLayer",
-        "projectPath": "D:\\Workspace\\C#\\Asp.NetCore\\ModernLearn\\ModernLearns\\ModernLearns.DataLayer\\ModernLearns.DataLayer.csproj",
+        "projectPath": "D:\\Workspace\\Project\\ModearnLearn\\ModearnLearn.Backend\\ModernLearns\\ModernLearns.DataLayer\\ModernLearns.DataLayer.csproj",
         "packagesPath": "C:\\Users\\Ali\\.nuget\\packages\\",
-        "outputPath": "D:\\Workspace\\C#\\Asp.NetCore\\ModernLearn\\ModernLearns\\ModernLearns.DataLayer\\obj\\",
+        "outputPath": "D:\\Workspace\\Project\\ModearnLearn\\ModearnLearn.Backend\\ModernLearns\\ModernLearns.DataLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\Ali\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -153,7 +158,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -162,7 +168,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

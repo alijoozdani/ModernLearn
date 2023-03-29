@@ -10,7 +10,7 @@ using ModernLearns.DataLayer.Entities.Course;
 
 namespace ModernLearns.Web.Pages.Admin.CourseGroups
 {
-    [PermissionChecker(20)]
+    [PermissionChecker(21)]
     public class EditGroupModel : PageModel
     {
         private ICourseService _courseService;

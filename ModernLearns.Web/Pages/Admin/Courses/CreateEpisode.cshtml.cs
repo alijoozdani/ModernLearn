@@ -11,7 +11,7 @@ using ModernLearns.DataLayer.Entities.Course;
 
 namespace ModernLearns.Web.Pages.Admin.Courses
 {
-    [PermissionChecker(12)]
+    [PermissionChecker(13)]
     public class CreateEpisodeModel : PageModel
     {
         private ICourseService _courseService;

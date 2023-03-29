@@ -23,7 +23,10 @@
     <section class="about_part">
         <header><span class="logo"><img src="/img/logo.png"></span><h2> درباره مدرن لرن </h2></header>
         <article class="about_text">
-            @Html.Raw(Model.Text)
+            @if (Model != null)
+            {
+                @Html.Raw(Model.Text)
+            }
         </article>
     </section>
 </div>

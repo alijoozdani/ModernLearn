@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ModernLearns.Core.Security;
 using ModernLearns.Core.Services.Interfaces;
 
 namespace ModernLearns.Web.Pages.Admin.AboutUs
 {
+    [PermissionChecker(23)]
     public class EditModel : PageModel
     {
         private IAboutUsService _aboutUs;

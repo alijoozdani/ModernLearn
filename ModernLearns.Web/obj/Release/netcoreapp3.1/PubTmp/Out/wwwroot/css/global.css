@@ -1,0 +1,15 @@
+.register {
+  padding: 150px 0;
+  font-size: 13px;
+  line-height: 1.8;
+  color: red;
+  background: #f8f8f8;
+  font-weight: 400;
+  font-family: Poppins;
+  width: 100% !important;
+  margin: 0 auto;
+  -webkit-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+          box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+}
+/*# sourceMappingURL=global.css.map */

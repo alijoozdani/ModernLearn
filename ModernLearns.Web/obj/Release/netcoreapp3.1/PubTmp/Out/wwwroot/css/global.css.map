@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AA8DA,AAAA,SAAS,CAAA;EACL,OAAO,EAAE,OAAO;EAChB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,GAAG;EAChB,KAAK,EAAE,GAAG;EACV,UAAU,EAAE,OAAO;EACnB,WAAW,EAAE,GAAG;EAChB,WAAW,EAAE,OAAO;EACpB,KAAK,EAAE,eAAe;EACtB,MAAM,EAAE,MAAM;EACd,UAAU,EAAC,GAAG,CAAC,IAAI,CAAC,OAAO,CAAC,MAAM,CAAC,mBAAmB;EACtD,aAAa,EAAC,IAAI;CACrB",
+    "sources": [
+        "../sass/global.scss"
+    ],
+    "names": [],
+    "file": "global.css"
+}

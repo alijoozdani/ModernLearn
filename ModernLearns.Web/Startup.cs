@@ -90,7 +90,7 @@ namespace ModernLearns.Web
                 if (context.Request.Path.Value.ToString().ToLower().StartsWith("/coursefilesonline"))
                 {
                     var callingUrl = context.Request.Headers["Referer"].ToString();
-                    if (callingUrl != "" && (callingUrl.StartsWith("https://localhost:44391") || callingUrl.StartsWith("https://localhost:44391")))
+                    if (callingUrl != "" && (callingUrl.StartsWith("https://modernlearns.ir") || callingUrl.StartsWith("https://modernlearns.ir")))
                     {
                         await next.Invoke();
                     }

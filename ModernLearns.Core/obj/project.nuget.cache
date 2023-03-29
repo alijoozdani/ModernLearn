@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tE7/wUIlJABub7aFw/9QHSOOvEfFO7QTZpgR5ghXdqIcAU+ZlhC2PDqgCEKDePBqRqbG9Jf8dj2PfYiLPqW1Hg==",
+  "dgSpecHash": "FilqpW/fwXEWj6+Su5AvIG63Hn4eTCS7UWm10u5Ltx7eQ4j1mYUxOTvDPbCBBRYDif/x1gZnpO7ytAFs+18EyQ==",
   "success": true,
-  "projectFilePath": "D:\\Workspace\\C#\\Asp.NetCore\\ModernLearn\\ModernLearns\\ModernLearns.Core\\ModernLearns.Core.csproj",
+  "projectFilePath": "D:\\Workspace\\Project\\ModearnLearn\\ModearnLearn.Backend\\ModernLearns\\ModernLearns.Core\\ModernLearns.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ali\\.nuget\\packages\\corecompat.system.drawing.v2\\5.2.0-preview1-r131\\corecompat.system.drawing.v2.5.2.0-preview1-r131.nupkg.sha512",
     "C:\\Users\\Ali\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
@@ -185,7 +185,7 @@
     "C:\\Users\\Ali\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.threading.tasks.extensions\\4.5.1\\system.threading.tasks.extensions.4.5.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.threading.tasks.parallel\\4.3.0\\system.threading.tasks.parallel.4.3.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.threading.thread\\4.3.0\\system.threading.thread.4.3.0.nupkg.sha512",
+    "C:\\Users\\Ali\\.nuget\\packages\\system.threading.thread\\4.3.0\\system.threading.thread.4.3.0.nupkg.sha512",
     "C:\\Users\\Ali\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.valuetuple\\4.3.0\\system.valuetuple.4.3.0.nupkg.sha512",
     "C:\\Users\\Ali\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
